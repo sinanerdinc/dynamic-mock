@@ -1,7 +1,10 @@
 # Dinamik Mock
 
-Docker ile araya bir gateway ekleyerek, docker chrome üzerinde çalıştırdığımız bir test için istediğimiz bir adresi, kendi yaptığımız bir mock servis ile değiştirmenize imkan sağlar. 
+Bu proje web otomasyon testlerinde anlık olarak bazı apilerin responselarını mock başka bir response ile değiştirmeye imkan sağlayan çalışan bir örneği içerir. Bu yöntem de farklı testleri yapabilmeyi mümkün kılar. Bunun için tüm sistemin docker üzerinde çalışan bir versiyonu hazırlanmalıdır.
 
+Bu projede test-runner klasörü, sizin testlerinizi içeren klasörü işaret eder. Bilgisayarınızda docker compose olduğunu varsayarak, çalıştırmak isterseniz aşağıdaki adımları kullananbilirsiniz.
+
+## Çalıştırma
 Mocklamak istenilen adresler config.yml içerisine eklenir. Sonrasında
 
 ```
@@ -30,7 +33,12 @@ burada artık testlerde free.freeipapi.com/api/json adresine gidildiğinde, gate
 docker compose exec test-runner python run_web_test.py
 ```
 
+Yazılan örnek test çalıştırıldığında eğer mock servis aktif ise 
 
+```
+{"result":"mocked response"}
+```
 
+şeklinde bir response dönecektir. Eğer mock servis kapalı ise o zaman gerçekten bu adresin döndüğü response dönecektir.
 
 
